@@ -1,7 +1,13 @@
-<!--Uncomment below to get interface states-->
 <filter xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
-    <interfaces-state xmlns="urn:ietf:params:xml:ns:yang:ietf-interfaces"/>
+    <interfaces xmlns="http://openconfig.net/yang/interfaces">
+        <interface>GigabitEthernet0/0/0/0</interface>
+    </interfaces>
 </filter>
+
+<!--Uncomment below to get interface states-->
+<!--<filter xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">-->
+<!--    <interfaces-state xmlns="urn:ietf:params:xml:ns:yang:ietf-interfaces"/>-->
+<!--</filter>-->
 
 <!--Uncomment below to get interface information AND interface states-->
 <!--<filter xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">-->

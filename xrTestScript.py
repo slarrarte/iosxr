@@ -19,9 +19,9 @@ xmlFilter = filterPath.read_text()
 # Get interface data
 print(
     netconfActions.netconfGet(
-        '10.10.20.48',
+        'sandbox-iosxr-1.cisco.com',
         '830',
-        'developer',
+        'admin',
         'C1sco12345',
         'iosxe',
         filter=xmlFilter
