@@ -1,7 +1,7 @@
 from ncclient import manager
 import xml.dom.minidom
 
-# Get Capabilities function
+# Get Capabilities function (aka <hello> rpc)
 def netconfGetCapabilities(
         host,
         port,
@@ -61,6 +61,33 @@ def netconfGet(
         device_params={'name': ios}
     ) as m:
         netconfReply = m.get_config(filter)
+        # Make returned XML data more human-readable
+        temp = xml.dom.minidom.parseString(str(netconfReply.xml))
+        new_xml = temp.toprettyxml()
+        print(new_xml)
+
+# <edit-config>
+def netconfEditConfig(
+        host,
+        port,
+        username,
+        password,
+        ios,
+        filter,
+        datastore
+):
+    with manager.connect(
+            host=host,
+            port=port,
+            username=username,
+            password=password,
+            hostkey_verify=False,
+            device_params={'name': ios}
+    ) as m:
+        netconfReply = m.edit_config(
+            config=filter,
+            target=datastore
+        )
         # Make returned XML data more human-readable
         temp = xml.dom.minidom.parseString(str(netconfReply.xml))
         new_xml = temp.toprettyxml()
