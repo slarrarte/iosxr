@@ -19,7 +19,7 @@
 <!--<config>-->
 <!--    <interfaces xmlns="urn:ietf:params:xml:ns:yang:ietf-interfaces">-->
 <!--        <interface>-->
-<!--            <name>Loopback16</name>-->
+<!--            <name>Loopback69</name>-->
 <!--            <type>softwareLoopback</type>-->
 <!--            <ipv4 xmlns="urn:ietf:params:xml:ns:yang:ietf-ip">-->
 <!--                <address>-->

@@ -9,6 +9,7 @@ def netconfGetCapabilities(
         password,
         ios
 ):
+    capabilities = []
     with manager.connect(
         host=host,
         port=port,
@@ -18,7 +19,9 @@ def netconfGetCapabilities(
         device_params={'name': ios}
     ) as m:
         for capability in m.server_capabilities:
-            print(capability)
+            capabilities.append(capability)
+        capabilities_str = '\n'.join(capabilities)
+        return capabilities_str
 
 # <get> (Only targets running datastore)
 def netconfGet(

@@ -1,16 +1,30 @@
 import netconfActions
 from pathlib import Path
 
-# Script mainly for use in DEVNET Sandbox XR 8000 Notebooks lab environment
+# Scripts used in various DevNet Sandbox environments
 
-# Get Capabilities
-netconfActions.netconfGetCapabilities(
-        'sandbox-iosxr-1.cisco.com',
-        '830',
-        'admin',
-        'C1sco12345',
-        'iosxr'
-)
+# Below code used in Cisco Crosswork sandbox
+
+# Below for loop creates text files containing capabilities for each router in topology.
+# capFileDir is the path to the directory for the Capabilities text files.
+capFileDir = Path.home()/'pyProjects/projects/iosXrLab/crossworkNodesCapabilities'
+for i in range(192, 200):
+        try:
+                capFile = open(capFileDir/f'{str(i)}.txt', 'a')
+                capFile.write(f'********************\n{str(i)}\n********************\n')
+                capFile.write(
+                        netconfActions.netconfGetCapabilities(
+                                f'10.10.20.{str(i)}',
+                                '830',
+                                'cisco',
+                                'cisco',
+                                'iosxr'
+                        )
+                )
+                capFile.close()
+        except:
+                continue
+
 #
 # # Path to NETCONF Filter
 # filterPath = Path.home()/'pyProjects'/'projects'/'iosXrLab'/'netconfFilter.xml'
