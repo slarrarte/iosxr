@@ -3,6 +3,52 @@ from pathlib import Path
 
 # Scripts used in various DevNet Sandbox environments
 
+# Below code to be used in XR Programmability Always-On Lab Env
+
+# Path to NETCONF Filter
+filterPath = Path.home()/'pyProjects'/'projects'/'iosXrLab'/'netconfFilter.xml'
+
+# Import filter into script
+xmlFilter = filterPath.read_text()
+
+# print(
+#     netconfActions.netconfGetCapabilities(
+#         'sandbox-iosxr-1.cisco.com',
+#         '830',
+#         'admin',
+#         'C1sco12345',
+#         'iosxr'
+#     )
+# )
+
+print(
+    netconfActions.netconfGetConfig(
+        'sandbox-iosxr-1.cisco.com',
+        '830',
+        'admin',
+        'C1sco12345',
+        'iosxr',
+        filter=xmlFilter,
+        datastore='running'
+    )
+)
+
+# Create hostname
+# print(
+#     netconfActions.netconfEditConfig(
+#         'sandbox-iosxr-1.cisco.com',
+#         '830',
+#         'admin',
+#         'C1sco12345',
+#         'iosxr',
+#         filter=xmlFilter,
+#         datastore='running'
+#     )
+# )
+
+
+############################################################################################
+
 # Below code used in Cisco Crosswork sandbox
 
 # Below for loop creates text files containing capabilities for each router in topology.
@@ -24,18 +70,18 @@ from pathlib import Path
 #                 capFile.close()
 #         except:
 #                 continue
-
-
-# Path to NETCONF Filter
-filterPath = Path.home()/'pyProjects'/'projects'/'iosXrLab'/'netconfFilter.xml'
-
-# Import filter into script
-xmlFilter = filterPath.read_text()
+#
+#
+# # Path to NETCONF Filter
+# filterPath = Path.home()/'pyProjects'/'projects'/'iosXrLab'/'netconfFilter.xml'
+#
+# # Import filter into script
+# xmlFilter = filterPath.read_text()
 
 # # Get interface data
 # print(
 #     netconfActions.netconfGetConfig(
-#         '10.10.20.195',
+#         '10.10.20.194',
 #         '830',
 #         'cisco',
 #         'cisco',
@@ -46,14 +92,14 @@ xmlFilter = filterPath.read_text()
 # )
 
 # # Create Loopback69
-print(
-    netconfActions.netconfEditConfig(
-        '10.10.20.195',
-        '830',
-        'cisco',
-        'cisco',
-        'iosxr',
-        filter=xmlFilter,
-        datastore='running'
-    )
-)
+# print(
+#     netconfActions.netconfEditConfig(
+#         'sandbox-iosxr-1.cisco.com',
+#         '830',
+#         'admin',
+#         'C1sco12345',
+#         'iosxr',
+#         filter=xmlFilter,
+#         datastore='running'
+#     )
+# )

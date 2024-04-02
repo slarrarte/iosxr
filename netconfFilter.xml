@@ -1,50 +1,26 @@
-<!--Uncomment below to get interface states-->
 <!--<filter xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">-->
-<!--    <interfaces xmlns="http://openconfig.net/yang/interfaces">-->
-<!--        <interface>-->
-<!--            <name>Loopback69</name>-->
-<!--        </interface>-->
-<!--    </interfaces>-->
+<!--    <interfaces xmlns="http://openconfig.net/yang/interfaces"/>-->
 <!--</filter>-->
-
-<!--Uncomment below to get interface information AND interface states-->
 <!--<filter xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">-->
 <!--    <interfaces xmlns="urn:ietf:params:xml:ns:yang:ietf-interfaces"/>-->
 <!--    <interfaces-state xmlns="urn:ietf:params:xml:ns:yang:ietf-interfaces"/>-->
 <!--</filter>-->
-
-<!--Uncomment below to configure interface-->
-<config>
-    <interfaces xmlns="http://openconfig.net/yang/interfaces">
-        <interface>
-            <name>Loopback69</name>
-            <config>
-                <name>Loopback69</name>
-                <type xmlns:idx="urn:ietf:params:xml:ns:yang:iana-if-type">idx:softwareLoopback</type>
-                <description>Sixty-nine</description>
-            </config>
-        </interface>
-    </interfaces>
-</config>
-
-<!--Below is a custom filter for editing Cisco-IOS-XE-native attributes-->
 <!--<config>-->
-<!--    <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">-->
-<!--        <hostname>netconfRouter1</hostname>-->
-<!--        <username>-->
-<!--            <name>testAccount</name>-->
-<!--            <privilege>15</privilege>-->
-<!--        </username>-->
-<!--    </native>-->
-<!--</config>-->
-
-<!--Below is a custom filter to edit interfaces, but with formatting enabled-->
-<!--<config>-->
-<!--    <interfaces xmlns="urn:ietf:params:xml:ns:yang:ietf-interfaces">-->
+<!--    <interfaces xmlns="http://openconfig.net/yang/interfaces">-->
 <!--        <interface>-->
-<!--            <name>{name}</name>-->
-<!--            <description>{description}</description>-->
-<!--            <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>-->
+<!--            <name>Loopback69</name>-->
+<!--            <config>-->
+<!--                <name>Loopback69</name>-->
+<!--                <type xmlns:idx="urn:ietf:params:xml:ns:yang:iana-if-type">idx:softwareLoopback</type>-->
+<!--                <description>Sixty-nine</description>-->
+<!--            </config>-->
 <!--        </interface>-->
 <!--    </interfaces>-->
 <!--</config>-->
+<filter xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <system xmlns="http://openconfig.net/yang/system">
+    <state>
+      <hostname/>
+    </state>
+  </system>
+</filter>
