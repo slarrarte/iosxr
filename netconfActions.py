@@ -43,17 +43,18 @@ def netconfGet(
         netconfReply = m.get(filter)
         # Make returned XML data more human-readable
         temp = xml.dom.minidom.parseString(str(netconfReply.xml))
-        new_xml = temp.toprettyxml()
-        print(new_xml)
+        new_xml = temp.toprettyxml(indent=" ", newl="")
+        return new_xml
 
 # <get-config> (Targets any specified datastore)
-def netconfGet(
+def netconfGetConfig(
         host,
         port,
         username,
         password,
         ios,
-        filter
+        filter,
+        datastore
 ):
     with manager.connect(
         host=host,
@@ -63,11 +64,14 @@ def netconfGet(
         hostkey_verify=False,
         device_params={'name': ios}
     ) as m:
-        netconfReply = m.get_config(filter)
+        netconfReply = m.get_config(
+            filter=filter,
+            source=datastore
+        )
         # Make returned XML data more human-readable
         temp = xml.dom.minidom.parseString(str(netconfReply.xml))
-        new_xml = temp.toprettyxml()
-        print(new_xml)
+        new_xml = temp.toprettyxml(indent=" ", newl="")
+        return new_xml
 
 # <edit-config>
 def netconfEditConfig(
@@ -93,5 +97,5 @@ def netconfEditConfig(
         )
         # Make returned XML data more human-readable
         temp = xml.dom.minidom.parseString(str(netconfReply.xml))
-        new_xml = temp.toprettyxml()
-        print(new_xml)
+        new_xml = temp.toprettyxml(indent=" ", newl="")
+        return new_xml
