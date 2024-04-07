@@ -1,4 +1,4 @@
-import netconfActions
+import netconfActions, fuck
 from pathlib import Path
 
 # Scripts used in various DevNet Sandbox environments
@@ -20,33 +20,61 @@ xmlFilter = filterPath.read_text()
 #         'iosxr'
 #     )
 # )
-
-print(
-    netconfActions.netconfGetConfig(
-        'sandbox-iosxr-1.cisco.com',
-        '830',
-        'admin',
-        'C1sco12345',
-        'iosxr',
-        filter=xmlFilter,
-        datastore='running'
-    )
-)
-
-# Create hostname
+#
 # print(
-#     netconfActions.netconfEditConfig(
-#         'sandbox-iosxr-1.cisco.com',
+#     netconfActions.netconfGetConfig(
+#         '10.10.20.35',
 #         '830',
-#         'admin',
+#         'developer',
 #         'C1sco12345',
 #         'iosxr',
 #         filter=xmlFilter,
 #         datastore='running'
 #     )
 # )
-
-
+qwer = """
+<config>
+    <interfaces xmlns="http://openconfig.net/yang/interfaces">
+      <interface>
+        <name>Loopback25</name>
+        <config>
+          <name>Loopback25</name>
+          <type xmlns:idx="urn:ietf:params:xml:ns:yang:iana-if-type">idx:softwareLoopback</type>
+          <enabled>true</enabled>
+          <description>Test</description>
+        </config>
+        <subinterfaces>
+          <subinterface>
+            <index>0</index>
+            <ipv4 xmlns="http://openconfig.net/yang/interfaces/ip">
+              <addresses>
+                <address>
+                  <ip>5.5.5.5</ip>
+                  <config>
+                    <ip>5.5.5.5</ip>
+                    <prefix-length>32</prefix-length>
+                  </config>
+                </address>
+              </addresses>
+            </ipv4>
+          </subinterface>
+        </subinterfaces>
+      </interface>
+    </interfaces>
+</config>
+"""
+# Create hostname
+# print(
+#     netconfActions.netconfEditConfig(
+#         '10.10.20.48',
+#         '830',
+#         'developer',
+#         'C1sco12345',
+#         'iosxr',
+#         filter=qwer,
+#         datastore='running'
+#     )
+# )
 ############################################################################################
 
 # Below code used in Cisco Crosswork sandbox

@@ -5,22 +5,32 @@
 <!--    <interfaces xmlns="urn:ietf:params:xml:ns:yang:ietf-interfaces"/>-->
 <!--    <interfaces-state xmlns="urn:ietf:params:xml:ns:yang:ietf-interfaces"/>-->
 <!--</filter>-->
-<!--<config>-->
-<!--    <interfaces xmlns="http://openconfig.net/yang/interfaces">-->
-<!--        <interface>-->
-<!--            <name>Loopback69</name>-->
-<!--            <config>-->
-<!--                <name>Loopback69</name>-->
-<!--                <type xmlns:idx="urn:ietf:params:xml:ns:yang:iana-if-type">idx:softwareLoopback</type>-->
-<!--                <description>Sixty-nine</description>-->
-<!--            </config>-->
-<!--        </interface>-->
-<!--    </interfaces>-->
-<!--</config>-->
-<filter xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
-  <system xmlns="http://openconfig.net/yang/system">
-    <state>
-      <hostname/>
-    </state>
-  </system>
-</filter>
+<config>
+    <interfaces xmlns="http://openconfig.net/yang/interfaces">
+      <interface>
+        <name>Loopback25</name>
+        <config>
+          <name>Loopback25</name>
+          <type xmlns:idx="urn:ietf:params:xml:ns:yang:iana-if-type">idx:softwareLoopback</type>
+          <enabled>true</enabled>
+          <description>Test</description>
+        </config>
+        <subinterfaces>
+          <subinterface>
+            <index>0</index>
+            <ipv4 xmlns="http://openconfig.net/yang/interfaces/ip">
+              <addresses>
+                <address>
+                  <ip>5.5.5.5</ip>
+                  <config>
+                    <ip>5.5.5.5</ip>
+                    <prefix-length>32</prefix-length>
+                  </config>
+                </address>
+              </addresses>
+            </ipv4>
+          </subinterface>
+        </subinterfaces>
+      </interface>
+    </interfaces>
+</config>

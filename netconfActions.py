@@ -92,8 +92,8 @@ def netconfEditConfig(
             device_params={'name': ios}
     ) as m:
         netconfReply = m.edit_config(
-            config=filter,
-            target=datastore
+            target=datastore,
+            config=filter
         )
         # Make returned XML data more human-readable
         temp = xml.dom.minidom.parseString(str(netconfReply.xml))
