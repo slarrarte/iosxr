@@ -21,30 +21,28 @@ xmlFilter = filterPath.read_text()
 #     )
 # )
 #
-# print(
-#     netconfActions.netconfGetConfig(
-#         '10.10.20.35',
-#         '830',
-#         'developer',
-#         'C1sco12345',
-#         'iosxr',
-#         filter=xmlFilter,
-#         datastore='running'
-#     )
-# )
-
-# Create hostname
 print(
-    netconfActions.netconfEditConfig(
+    netconfActions.netconfGetSchema(
         '172.16.100.5',
         '830',
         'developer',
         'C1sco12345',
         'iosxr',
-        filter=xmlFilter,
-        datastore='running'
+        identifier="http://cisco.com/ns/yang/Cisco-IOS-XR-ifmgr-cfg"
     )
 )
+
+# Create hostname
+# print(
+#     netconfActions.netconfEditConfig(
+#         '172.16.100.5',
+#         '830',
+#         'developer',
+#         'C1sco12345',
+#         'iosxr',
+#         filter=xmlFilter
+#     )
+# )
 ############################################################################################
 
 # Below code used in Cisco Crosswork sandbox
@@ -52,22 +50,18 @@ print(
 # Below for loop creates text files containing capabilities for each router in topology.
 # capFileDir is the path to the directory for the Capabilities text files.
 # capFileDir = Path.home()/'pyProjects/projects/iosXrLab/crossworkNodesCapabilities'
-# for i in range(192, 200):
-#         try:
-#                 capFile = open(capFileDir/f'{str(i)}.txt', 'a')
-#                 capFile.write(f'********************\n{str(i)}\n********************\n')
-#                 capFile.write(
-#                         netconfActions.netconfGetCapabilities(
-#                                 f'10.10.20.{str(i)}',
-#                                 '830',
-#                                 'cisco',
-#                                 'cisco',
-#                                 'iosxr'
-#                         )
-#                 )
-#                 capFile.close()
-#         except:
-#                 continue
+# capFile = open(capFileDir/'PE1-RR.txt', 'w')
+# capFile.write(
+#         netconfActions.netconfGetCapabilities(
+#                 '172.16.100.5',
+#                 '830',
+#                 'developer',
+#                 'C1sco12345',
+#                 'iosxr'
+#         )
+# )
+# capFile.close()
+
 #
 #
 # # Path to NETCONF Filter
@@ -79,10 +73,10 @@ print(
 # # Get interface data
 # print(
 #     netconfActions.netconfGetConfig(
-#         '10.10.20.194',
+#         '10.10.20.35',
 #         '830',
-#         'cisco',
-#         'cisco',
+#         'developer',
+#         'C1sco12345',
 #         'iosxr',
 #         filter=xmlFilter,
 #         datastore='running'

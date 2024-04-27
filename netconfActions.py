@@ -20,6 +20,7 @@ def netconfGetCapabilities(
     ) as m:
         for capability in m.server_capabilities:
             capabilities.append(capability)
+        capabilities.sort()
         capabilities_str = '\n'.join(capabilities)
         return capabilities_str
 
@@ -80,8 +81,7 @@ def netconfEditConfig(
         username,
         password,
         ios,
-        filter,
-        datastore
+        filter
 ):
     with manager.connect(
             host=host,
@@ -92,10 +92,11 @@ def netconfEditConfig(
             device_params={'name': ios}
     ) as m:
         netconfReply = m.edit_config(
-            target=datastore,
+            target='candidate',
             config=filter
         )
         # Make returned XML data more human-readable
         temp = xml.dom.minidom.parseString(str(netconfReply.xml))
         new_xml = temp.toprettyxml(indent=" ", newl="")
+        m.commit()
         return new_xml
