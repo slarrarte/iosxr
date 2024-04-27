@@ -1,0 +1,26 @@
+<config>
+<!--    DEVICE HOSTNAME-->
+    <hostname xmlns="http://cisco.com/ns/yang/Cisco-IOS-XR-um-hostname-cfg">
+        <system-network-name>{router_hostname}</system-network-name>
+    </hostname>
+<!--    LOCAL ACCOUNT CREATION-->
+    <aaa xmlns="http://cisco.com/ns/yang/Cisco-IOS-XR-um-aaa-cfg">
+        <usernames xmlns="http://cisco.com/ns/yang/Cisco-IOS-XR-um-aaa-task-user-cfg">
+            <username>
+                <ordering-index>0</ordering-index>
+                <name>{username}</name>
+                <group>
+                    <root-lr/>
+                    <cisco-support/>
+                </group>
+                <secret>
+                    <ten>{password_hash}</ten>
+                </secret>
+            </username>
+        </usernames>
+    </aaa>
+<!--    DOMAIN NAME-->
+    <domain xmlns="http://cisco.com/ns/yang/Cisco-IOS-XR-um-domain-cfg">
+        <name>{domain}</name>
+    </domain>
+</config>
