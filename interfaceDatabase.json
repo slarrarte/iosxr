@@ -1,0 +1,141 @@
+{
+   "PE1-RR": [
+      {
+         "active": "act",
+         "interface-name": "Loopback0",
+         "interface-virtual": null,
+         "ipv4-network": {
+            "@xmlns": "http://cisco.com/ns/yang/Cisco-IOS-XR-ipv4-io-cfg",
+            "addresses": {
+               "primary": {
+                  "address": "100.64.0.1",
+                  "netmask": "255.255.255.255"
+               }
+            }
+         }
+      },
+      {
+         "active": "act",
+         "interface-name": "Loopback25",
+         "interface-virtual": null,
+         "description": "Test",
+         "ipv4-network": {
+            "@xmlns": "http://cisco.com/ns/yang/Cisco-IOS-XR-ipv4-io-cfg",
+            "addresses": {
+               "primary": {
+                  "address": "5.5.5.5",
+                  "netmask": "255.255.255.255"
+               }
+            }
+         }
+      },
+      {
+         "active": "act",
+         "interface-name": "MgmtEth0/RP0/CPU0/0",
+         "shutdown": null
+      },
+      {
+         "active": "act",
+         "interface-name": "GigabitEthernet0/0/0/0",
+         "description": "//PE2//",
+         "ipv4-network": {
+            "@xmlns": "http://cisco.com/ns/yang/Cisco-IOS-XR-ipv4-io-cfg",
+            "addresses": {
+               "primary": {
+                  "address": "10.0.0.0",
+                  "netmask": "255.255.255.254"
+               }
+            }
+         }
+      },
+      {
+         "active": "act",
+         "interface-name": "GigabitEthernet0/0/0/1",
+         "description": "//PE3//",
+         "ipv4-network": {
+            "@xmlns": "http://cisco.com/ns/yang/Cisco-IOS-XR-ipv4-io-cfg",
+            "addresses": {
+               "primary": {
+                  "address": "10.0.0.2",
+                  "netmask": "255.255.255.254"
+               }
+            }
+         }
+      },
+      {
+         "active": "act",
+         "interface-name": "GigabitEthernet0/0/0/2",
+         "description": "//PE4//",
+         "ipv4-network": {
+            "@xmlns": "http://cisco.com/ns/yang/Cisco-IOS-XR-ipv4-io-cfg",
+            "addresses": {
+               "primary": {
+                  "address": "10.0.0.4",
+                  "netmask": "255.255.255.254"
+               }
+            }
+         }
+      },
+      {
+         "active": "act",
+         "interface-name": "GigabitEthernet0/0/0/3",
+         "description": "//EXT-CONN//",
+         "ipv4-network": {
+            "@xmlns": "http://cisco.com/ns/yang/Cisco-IOS-XR-ipv4-io-cfg",
+            "addresses": {
+               "primary": {
+                  "address": "172.16.100.5",
+                  "netmask": "255.255.255.0"
+               }
+            }
+         }
+      },
+      {
+         "active": "act",
+         "interface-name": "GigabitEthernet0/0/0/4",
+         "description": "//CustA-SiteA//",
+         "vrf": {
+            "@xmlns": "http://cisco.com/ns/yang/Cisco-IOS-XR-infra-rsi-cfg",
+            "#text": "CustA"
+         },
+         "ipv4-network": {
+            "@xmlns": "http://cisco.com/ns/yang/Cisco-IOS-XR-ipv4-io-cfg",
+            "addresses": {
+               "primary": {
+                  "address": "172.16.0.0",
+                  "netmask": "255.255.255.254"
+               }
+            }
+         }
+      },
+      {
+         "active": "act",
+         "interface-name": "GigabitEthernet0/0/0/5",
+         "description": "//RR//",
+         "ipv4-network": {
+            "@xmlns": "http://cisco.com/ns/yang/Cisco-IOS-XR-ipv4-io-cfg",
+            "addresses": {
+               "primary": {
+                  "address": "10.0.0.16",
+                  "netmask": "255.255.255.254"
+               }
+            }
+         }
+      },
+      {
+         "active": "act",
+         "interface-name": "GigabitEthernet0/0/0/6",
+         "shutdown": null
+      },
+      {
+         "active": "act",
+         "interface-name": "GigabitEthernet0/0/0/7",
+         "shutdown": null
+      },
+      {
+         "active": "act",
+         "interface-name": "GigabitEthernet0/0/0/8",
+         "shutdown": null
+      }
+   ]
+}
