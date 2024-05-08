@@ -6,14 +6,14 @@ from getpass import getpass
 import xmltodict, json
 
 # Path to document where inventory data will be written to (JSON formatted)
-database_path = '/Users/santiagolarrarte/pyProjects/projects/iosXrLab/interfaceDatabase.json'
+database_path = '/Users/santiagolarrarte/pyProjects/projects/iosXrLab/dataCollection/interfaceDatabase.json'
 
 # List all the router IPs that you'd like included in the data gathering
-router_loopbacks = ['172.16.100.5', '172.16.100.6','172.16.100.7', '172.16.100.8', '172.16.100.9']
+router_loopbacks = ['172.16.100.5', '172.16.100.6', '172.16.100.7', '172.16.100.8', '172.16.100.9']
 
 # For security purposes, username and password will be entered at user input prompt
 enter_username = input('Username: \n')
-enter_password = getpass()
+enter_password = getpass('Password: \n')
 
 # YANG-formatted filter for XML parsing
 xml_filter = """

@@ -35,5 +35,5 @@
 <!--    </interfaces>-->
 <!--</config>-->
 <filter xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
-  <interface-configurations xmlns="http://cisco.com/ns/yang/Cisco-IOS-XR-ifmgr-cfg"/>
+  <ospf xmlns="http://cisco.com/ns/yang/Cisco-IOS-XR-ipv4-ospf-oper"/>
 </filter>

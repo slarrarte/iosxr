@@ -21,16 +21,16 @@ xmlFilter = filterPath.read_text()
 #     )
 # )
 #
-# print(
-#     netconfActions.netconfGetSchema(
-#         '172.16.100.5',
-#         '830',
-#         'developer',
-#         'C1sco12345',
-#         'iosxr',
-#         identifier="http://cisco.com/ns/yang/Cisco-IOS-XR-ifmgr-cfg"
-#     )
-# )
+print(
+    netconfActions.netconfGet(
+        '172.16.100.5',
+        '830',
+        'developer',
+        'C1sco12345',
+        'iosxr',
+        xmlFilter
+    )
+)
 
 # Create hostname
 # print(
@@ -49,19 +49,19 @@ xmlFilter = filterPath.read_text()
 
 # Below for loop creates text files containing capabilities for each router in topology.
 # capFileDir is the path to the directory for the Capabilities text files.
-capFileDir = Path.home()/'pyProjects/projects/iosXrLab/crossworkNodesCapabilities'
-for router in ['172.16.100.5', '172.16.100.6','172.16.100.7', '172.16.100.8', '172.16.100.9']:
-    capFile = open(capFileDir/f'{router}.txt', 'w')
-    capFile.write(
-            netconfActions.netconfGetCapabilities(
-                    f'{router}',
-                    '830',
-                    'developer',
-                    'C1sco12345',
-                    'iosxr'
-            )
-    )
-    capFile.close()
+# capFileDir = Path.home()/'pyProjects/projects/iosXrLab/crossworkNodesCapabilities'
+# for router in ['172.16.100.5', '172.16.100.6','172.16.100.7', '172.16.100.8', '172.16.100.9']:
+#     capFile = open(capFileDir/f'{router}.txt', 'w')
+#     capFile.write(
+#             netconfActions.netconfGetCapabilities(
+#                     f'{router}',
+#                     '830',
+#                     'developer',
+#                     'C1sco12345',
+#                     'iosxr'
+#             )
+#     )
+#     capFile.close()
 
 #
 #
