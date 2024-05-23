@@ -1,4 +1,4 @@
-# deviceInventory.py
+# xrInterfaceInventory.py
 # The purpose of this script is to automate the obtaining of interface data for all nodes
 # in your network (as many nodes as you list)
 from netconfActions import netconfGet as get
