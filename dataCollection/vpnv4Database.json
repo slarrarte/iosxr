@@ -1,1 +1,158 @@
-{}
+{
+   "172.16.100.5": {
+      "vrf": {
+         "vrf-name": "CustA",
+         "vrf-name-xr": "CustA",
+         "vrf-description": "//CustA SiteA//",
+         "route-distinguisher": "1:1",
+         "interface": {
+            "interface-name": "GigabitEthernet0/0/0/4"
+         },
+         "af": [
+            {
+               "af-name": "ipv4",
+               "saf-name": "unicast",
+               "route-target": [
+                  {
+                     "route-target-type": "import",
+                     "route-target-value": "1:1",
+                     "af-name": "ipv4",
+                     "saf-name": "unicast"
+                  },
+                  {
+                     "route-target-type": "import",
+                     "route-target-value": "1:2",
+                     "af-name": "ipv4",
+                     "saf-name": "unicast"
+                  },
+                  {
+                     "route-target-type": "export",
+                     "route-target-value": "1:1",
+                     "af-name": "ipv4",
+                     "saf-name": "unicast"
+                  }
+               ]
+            },
+            {
+               "af-name": "ipv6",
+               "saf-name": "unicast"
+            }
+         ],
+         "is-big-vrf": "false"
+      }
+   },
+   "172.16.100.7": {
+      "vrf": {
+         "vrf-name": "CustB",
+         "vrf-name-xr": "CustB",
+         "vrf-description": "//CustB//",
+         "route-distinguisher": "2:1",
+         "interface": {
+            "interface-name": "GigabitEthernet0/0/0/4"
+         },
+         "af": [
+            {
+               "af-name": "ipv4",
+               "saf-name": "unicast",
+               "route-target": [
+                  {
+                     "route-target-type": "import",
+                     "route-target-value": "2:2",
+                     "af-name": "ipv4",
+                     "saf-name": "unicast"
+                  },
+                  {
+                     "route-target-type": "export",
+                     "route-target-value": "2:1",
+                     "af-name": "ipv4",
+                     "saf-name": "unicast"
+                  }
+               ]
+            },
+            {
+               "af-name": "ipv6",
+               "saf-name": "unicast"
+            }
+         ],
+         "is-big-vrf": "false"
+      }
+   },
+   "172.16.100.8": {
+      "vrf": {
+         "vrf-name": "CustB",
+         "vrf-name-xr": "CustB",
+         "vrf-description": "//CustB//",
+         "route-distinguisher": "2:2",
+         "interface": {
+            "interface-name": "GigabitEthernet0/0/0/5"
+         },
+         "af": [
+            {
+               "af-name": "ipv4",
+               "saf-name": "unicast",
+               "route-target": [
+                  {
+                     "route-target-type": "import",
+                     "route-target-value": "2:1",
+                     "af-name": "ipv4",
+                     "saf-name": "unicast"
+                  },
+                  {
+                     "route-target-type": "export",
+                     "route-target-value": "2:2",
+                     "af-name": "ipv4",
+                     "saf-name": "unicast"
+                  }
+               ]
+            },
+            {
+               "af-name": "ipv6",
+               "saf-name": "unicast"
+            }
+         ],
+         "is-big-vrf": "false"
+      }
+   },
+   "172.16.100.9": {
+      "vrf": {
+         "vrf-name": "CustA",
+         "vrf-name-xr": "CustA",
+         "vrf-description": "//CustA SiteB//",
+         "route-distinguisher": "1:1",
+         "interface": {
+            "interface-name": "GigabitEthernet0/0/0/2"
+         },
+         "af": [
+            {
+               "af-name": "ipv4",
+               "saf-name": "unicast",
+               "route-target": [
+                  {
+                     "route-target-type": "import",
+                     "route-target-value": "1:1",
+                     "af-name": "ipv4",
+                     "saf-name": "unicast"
+                  },
+                  {
+                     "route-target-type": "import",
+                     "route-target-value": "1:2",
+                     "af-name": "ipv4",
+                     "saf-name": "unicast"
+                  },
+                  {
+                     "route-target-type": "export",
+                     "route-target-value": "1:2",
+                     "af-name": "ipv4",
+                     "saf-name": "unicast"
+                  }
+               ]
+            },
+            {
+               "af-name": "ipv6",
+               "saf-name": "unicast"
+            }
+         ],
+         "is-big-vrf": "false"
+      }
+   }
+}

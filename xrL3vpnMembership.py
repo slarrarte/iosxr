@@ -1,19 +1,19 @@
 # XR L3VPN MEMBERSHIP
 # This script pulls all MPLS L3VPN memberships from a list of routers
-# and creates a database from it.
+# and creates/modifies a JSON-formatted database from it.
 from netconfActions import netconfGet as get
-from getpass import getpass
+from pathlib import Path
 import xmltodict, json
 
 # Path to document where vpnv4 data will be written to (JSON formatted)
-database_path = '/Users/santiagolarrarte/pyProjects/projects/iosXrLab/dataCollection/vpnv4Database.json'
+database_path = Path.cwd()/'dataCollection/vpnv4Database.json'
 
 # List all the router IPs that you'd like included in the data gathering
 router_loopbacks = ['172.16.100.5', '172.16.100.6', '172.16.100.7', '172.16.100.8', '172.16.100.9']
 
 # For security purposes, username and password will be entered at user input prompt
 enter_username = input('Username: \n')
-enter_password = getpass('Password: \n')
+enter_password = input('Password: \n')
 
 # YANG-formatted filter for XML parsing
 xml_filter = """
@@ -23,8 +23,8 @@ xml_filter = """
 """
 
 # Import interfaceDatabase.json into program as a dictionary to be modified
-# with open(database_path, 'r') as json_data:
-#     dict_data = json.load(json_data)
+with open(database_path, 'r') as json_data:
+    dict_data = json.load(json_data)
 
 for router in router_loopbacks:
     router_response = xmltodict.parse(
@@ -37,7 +37,14 @@ for router in router_loopbacks:
             filter=xml_filter
         )
     )
-    print(router_response)
-# database_doc = open(database_path, 'w')
-# database_doc.write(json.dumps(dict_data, indent=3))
-# database_doc.close()
+    try:
+        for vrf in router_response['rpc-reply']['data']['l3vpn']['vrfs']:
+            for
+            # dict_data[router] = router_response['rpc-reply']['data']['l3vpn']['vrfs']
+    except:
+        print(f'No VPNv4 data found on {router}\n')
+        continue
+
+database_doc = open(database_path, 'w')
+database_doc.write(json.dumps(dict_data, indent=3))
+database_doc.close()
