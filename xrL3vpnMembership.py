@@ -38,9 +38,7 @@ for router in router_loopbacks:
         )
     )
     try:
-        for vrf in router_response['rpc-reply']['data']['l3vpn']['vrfs']:
-            for
-            # dict_data[router] = router_response['rpc-reply']['data']['l3vpn']['vrfs']
+        dict_data[router] = router_response['rpc-reply']['data']['l3vpn']['vrfs']
     except:
         print(f'No VPNv4 data found on {router}\n')
         continue
