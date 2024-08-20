@@ -1,6 +1,15 @@
 from ncclient import manager
 import xml.dom.minidom
 
+# XML handling function to be called as decorator in subsequent functions
+def readable_xml(func):
+    def wrapper(*args, **kwargs):
+        xml_result = func(*args, **kwargs)
+        temp = xml.dom.minidom.parseString(str(xml_result))
+        new_xml = temp.toprettyxml(indent=" ", newl="")
+        return new_xml
+    return wrapper
+
 # Get Capabilities function (aka <hello> rpc)
 def netconfGetCapabilities(
         host,
@@ -25,6 +34,7 @@ def netconfGetCapabilities(
         return capabilities_str
 
 # <get> (Only targets running datastore)
+@readable_xml
 def netconfGet(
         host,
         port,
@@ -41,21 +51,17 @@ def netconfGet(
         hostkey_verify=False,
         device_params={'name': ios}
     ) as m:
-        netconfReply = m.get(filter)
-        # Make returned XML data more human-readable
-        temp = xml.dom.minidom.parseString(str(netconfReply.xml))
-        new_xml = temp.toprettyxml(indent=" ", newl="")
-        return new_xml
+        return m.get(filter).xml
 
 # <get-config> (Targets any specified datastore)
+@readable_xml
 def netconfGetConfig(
         host,
         port,
         username,
         password,
         ios,
-        filter,
-        datastore
+        filter
 ):
     with manager.connect(
         host=host,
@@ -65,16 +71,13 @@ def netconfGetConfig(
         hostkey_verify=False,
         device_params={'name': ios}
     ) as m:
-        netconfReply = m.get_config(
+        return m.get_config(
             filter=filter,
-            source=datastore
-        )
-        # Make returned XML data more human-readable
-        temp = xml.dom.minidom.parseString(str(netconfReply.xml))
-        new_xml = temp.toprettyxml(indent=" ", newl="")
-        return new_xml
+            source='running'
+        ).xml
 
 # <edit-config>
+@readable_xml
 def netconfEditConfig(
         host,
         port,
@@ -91,12 +94,7 @@ def netconfEditConfig(
             hostkey_verify=False,
             device_params={'name': ios}
     ) as m:
-        netconfReply = m.edit_config(
-            target='candidate',
+        return m.edit_config(
+            target='running',
             config=filter
-        )
-        # Make returned XML data more human-readable
-        temp = xml.dom.minidom.parseString(str(netconfReply.xml))
-        new_xml = temp.toprettyxml(indent=" ", newl="")
-        m.commit()
-        return new_xml
+        ).xml
