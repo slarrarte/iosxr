@@ -6,10 +6,9 @@ from pathlib import Path
 import xmltodict, json
 
 # Path to document where vpnv4 data will be written to (JSON formatted)
-database_path = Path.cwd()/'dataCollection/vpnv4Database.json'
-
+database_path = ''
 # List all the router IPs that you'd like included in the data gathering
-router_loopbacks = ['172.16.100.5', '172.16.100.6', '172.16.100.7', '172.16.100.8', '172.16.100.9']
+router_loopbacks = ['']
 
 # For security purposes, username and password will be entered at user input prompt
 enter_username = input('Username: \n')
