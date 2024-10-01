@@ -20,12 +20,13 @@ def netconfGetCapabilities(
 ):
     capabilities = []
     with manager.connect(
-        host=host,
-        port=port,
-        username=username,
-        password=password,
-        hostkey_verify=False,
-        device_params={'name': ios}
+            host=host,
+            port=port,
+            username=username,
+            password=password,
+            hostkey_verify=False,
+            device_params={'name': ios},
+            timeout=10
     ) as m:
         for capability in m.server_capabilities:
             capabilities.append(capability)
@@ -44,12 +45,13 @@ def netconfGet(
         filter
 ):
     with manager.connect(
-        host=host,
-        port=port,
-        username=username,
-        password=password,
-        hostkey_verify=False,
-        device_params={'name': ios}
+            host=host,
+            port=port,
+            username=username,
+            password=password,
+            hostkey_verify=False,
+            device_params={'name': ios},
+            timeout=10
     ) as m:
         return m.get(filter).xml
 
@@ -64,12 +66,13 @@ def netconfGetConfig(
         filter
 ):
     with manager.connect(
-        host=host,
-        port=port,
-        username=username,
-        password=password,
-        hostkey_verify=False,
-        device_params={'name': ios}
+            host=host,
+            port=port,
+            username=username,
+            password=password,
+            hostkey_verify=False,
+            device_params={'name': ios},
+            timeout=10
     ) as m:
         return m.get_config(
             filter=filter,
@@ -92,7 +95,8 @@ def netconfEditConfig(
             username=username,
             password=password,
             hostkey_verify=False,
-            device_params={'name': ios}
+            device_params={'name': ios},
+            timeout=10
     ) as m:
         return m.edit_config(
             target='running',
